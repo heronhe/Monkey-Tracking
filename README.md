@@ -15,6 +15,8 @@ ga统计代码初始化:
         action: 'b',
     }）
 
+
+
 也可以直接调用统计方法。
 
 事件统计方法：
@@ -33,6 +35,7 @@ ga统计代码初始化:
 
 当前版本只支持GA，如果需要兼容其它统计代码，可以重写MonkeyTracking._sendEV方法，直接调用MonkeyTracking.send_EV统计方法，（注意区分send_PV和_sendEV两个方法，以免混淆使用）例如：
 
+    var _fn = MonkeyTracking._sendEV;
     MonkeyTracking._sendEV = function () {
         _fn.apply(this, arguments);
         var axel = Math.random() + "";
@@ -41,6 +44,14 @@ ga统计代码初始化:
         img1.src="http://5317903.fls.doubleclick.net/activityi;src=5317903;type=super0;cat="+arguments.catName1+";ord=" + a + "?" ;
         var img2 = new Image();
         img2.src="http://5317903.fls.doubleclick.net/activityi;src=5317903;type=super0;cat="+arguments.catName2+";ord=1;num=" + a + "?" ;
+    }
+    
+    document.querySelector('#but').onclick = function () {
+        MonkeyTracking.send_EV({
+            label: '',
+            catName1: '',
+            catName2: ''
+        })
     }
  
 

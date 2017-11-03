@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tracking-test</title>
+</head>
+<body>
+<input type="text" class="username">
+
+<button id="but" MkGaLabel="aa">提交</button>
+
+<script src="js/jquery-2.1.3.min.js"></script>
+<script src="js/Monkey-Tracking.js"></script>
+
+<script>
+
+    MonkeyTracking.init({
+        UAID: ['UA-59062826-5', 'UA-666666'],
+        category: 'a',
+        action: 'b',
+    });
+
+    var _fn = MonkeyTracking._sendEV;
+
+//    //重写统计事件, 可以添加fl统计
+//    MonkeyTracking._sendEV = function () {
+//        _fn.apply(this, arguments);
+//        console.log('agin')
+//    }
+//
+//    document.querySelector('#but').onclick = function () {
+//        MonkeyTracking.send_EV({
+//            label: '888'
+//        })
+//    }
+
+</script>
+
+</body>
+</html>
